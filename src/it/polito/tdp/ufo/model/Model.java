@@ -21,6 +21,9 @@ public class Model {
 	
 	private Graph <String, DefaultEdge> graph;
 	
+	private List <String> soluzione;
+	
+	
 	public Model () {
 		this.sdao = new SightingsDAO();
 		
@@ -74,4 +77,38 @@ public class Model {
 		//raggiungibili.remove(0);
 		return raggiungibili;
 	}
+	
+	
+	public List <String> getPercorsoMassimo (String statoPartenza){
+	
+		this.soluzione = new ArrayList<>();
+		
+		List <String> parziale = new ArrayList<>();
+		parziale.add(statoPartenza);
+		
+		this.ricorsiva (parziale);
+		
+		return soluzione;
+	}
+
+	private void ricorsiva(List<String> parziale) {
+		
+		// caso terminale (se ho aggiunto un elemento a parziale)
+		if (parziale.size() > this.soluzione.size())
+			this.soluzione = new ArrayList<>(parziale);
+		
+		// passo ricorsivo
+		List <String> candidati = this.getStatiSuccessivi(parziale.get(parziale.size() - 1));
+		
+		for (String prova : candidati) {
+			
+			if (!parziale.contains(prova)) {
+				parziale.add(prova);
+				this.ricorsiva(parziale);
+				parziale.remove(parziale.size() - 1);
+			}
+		}
+	}
+	
+	
 }
