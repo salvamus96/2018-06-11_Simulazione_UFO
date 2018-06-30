@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="it.polito.tdp.ufo.UfoController">
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.ufo.UfoController">
    <top>
       <Label text="UFO Sightings (simulazione d'esame 11/06/2018)" textFill="BLUE" BorderPane.alignment="CENTER">
          <font>
@@ -45,7 +44,7 @@
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleSequenza" text="Sequenza di avvistamenti" textAlignment="JUSTIFY" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <TextArea fx:id="txtResult" />
+            <TextArea fx:id="txtResult" editable="false" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
